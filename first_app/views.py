@@ -12,3 +12,6 @@ def appPage(request):
 def templatePage(request):
     x = {'insert_me' : "This is from views.py"}
     return render(request, "first_app/index.html", context= x)
+
+def imagePage(request):
+    return render(request, "first_app/imagePageHtml.html")
