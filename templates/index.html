@@ -1,0 +1,34 @@
+<!DOCTYPE html> {% load static %}
+<html>
+
+<head>
+    <title>MTV INDEX</title>
+    <link rel="stylesheet" href="{% static 'css/temp.css' %}" />
+</head>
+
+<body>
+    <h1>This is the index page</h1>
+    <h2>Here is the access record table : </h2>
+
+    <div class=accessRecord>
+        {% if access_record %}
+        <table>
+            <th>Name</th>
+            <th>Date</th>
+            {% for i in access_record %}
+            <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.date}}</td>
+            </tr>
+            {% endfor%}
+        </table>
+
+        {% else %}
+
+        <h3>NO DATA FOUND</h3>
+
+        {% endif %}
+    </div>
+</body>
+
+</html>
