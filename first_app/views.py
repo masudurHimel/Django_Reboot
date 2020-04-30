@@ -2,13 +2,15 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from first_app.models import Webpage, Topic, AccessDate
 from first_app import forms
+from django.shortcuts import redirect
 
 # Create your views here.
 
 def index(request):
-    webpg = AccessDate.objects.order_by('date')
-    webpageDict = {'access_record': webpg} 
-    return render(request, "index.html", context = webpageDict)
+    ad = AccessDate.objects.order_by('date')
+    topicInfo = Topic.objects.order_by('top_name')
+    modelInfo = {'access_record': ad, 'topicInfo': topicInfo} 
+    return render(request, "index.html", context = modelInfo)
 
 def appPage(request):
     return HttpResponse("This is the firstApp page !!!")
@@ -39,3 +41,19 @@ def formPageView(request):
 
     x = {'form': form}
     return render(request, "form_page.html", context = x)
+
+
+
+def topicAddView(request):
+    form = forms.TopicInfoUpdater()
+
+    if request.method == "POST":
+        form = forms.TopicInfoUpdater(request.POST)
+
+        if form.is_valid():
+            form.save(commit = True)
+            #return index(request)
+            return redirect("../")
+
+    x = {'form': form}
+    return render(request, "topicInfoAddPage.html", context = x)

@@ -11,7 +11,7 @@
     <h1>This is the index page</h1>
     <h2>Here is the access record table : </h2>
 
-    <div class=accessRecord>
+    <div class="container" id="AccessRecords">
         {% if access_record %}
         <table>
             <th>Name</th>
@@ -31,6 +31,27 @@
         {% endif %}
     </div>
     <br><br>
+    <h2>Here are the topic names :</h2>
+    <div class="container" id="TopicInfo">
+        {% if topicInfo %}
+        <table>
+            <th>Topic</th>
+            {% for i in topicInfo %}
+            <tr>
+                <td>{{i.top_name}}</td>
+            </tr>
+            {% endfor%}
+        </table>
+
+        {% else %}
+
+        <h3>NO DATA FOUND</h3>
+
+        {% endif %}
+    </div>
+    <br><br>
+
+
     <div class='container'>
         <h3>Here are the indexes</h3>
         <a href="firstApp/" class="btn btn-primary">FirstApp</a>
@@ -38,7 +59,10 @@
         <a href="firstApp/template" class="btn btn-primary">Template Page</a>
         <a href="admin/" class="btn btn-primary">Admin</a>
         <a href="formPage/" class="btn btn-primary">Form Page</a>
+        <a href="topicAdd/" class="btn btn-primary">Topic Add</a>
     </div>
+    <br><br>
+
 </body>
 
 </html>
