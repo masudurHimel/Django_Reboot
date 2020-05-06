@@ -11,8 +11,14 @@
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <ul class="nav navbar-nav">
-                <li><a class="navbar-brand" href="../">Index</a></li>
-                <li><a class="navbar-brand" href="registration/">Registration</a></li>
+                <li><a class="navbar-brand" href="../">DJANGO_User</a></li>
+                <li><a class="navbar-link" href="registration/">Registration</a></li>
+                {% if user.is_authenticated %}
+                <li><a class="navbar-link" href="logout/">Logout</a></li>
+                {% else %}
+                <li><a class="navbar-link" href="login/">Login</a></li>
+                {% endif %}
+
             </ul>
         </div>
     </nav>
