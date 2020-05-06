@@ -25,4 +25,5 @@ urlpatterns = [
     path('', views.index, name = 'Index'),
     path('firstApp/', include("first_app.urls")),
     path('topicAdd/', views.topicAddView, name = "Topic Add"),
+    path('userapp/',include("User_App.urls")),
 ]   
